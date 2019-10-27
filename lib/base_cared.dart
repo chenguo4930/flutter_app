@@ -8,6 +8,7 @@ class BaseCard extends StatefulWidget {
 
 class BaseCardState extends State<BaseCard> {
   Color subTitleColor = Colors.grey;
+  Color bottomTitleColor = Colors.grey;
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +32,8 @@ class BaseCardState extends State<BaseCard> {
           crossAxisAlignment: CrossAxisAlignment.start, //子控件左对齐
           children: <Widget>[
             Row(
-              children: <Widget>[topTitle('')],
+              crossAxisAlignment: CrossAxisAlignment.end, //居下对齐
+              children: <Widget>[topTitle(''), topTitle2('')],
             ),
             subTitle('')
           ],
@@ -51,5 +53,17 @@ class BaseCardState extends State<BaseCard> {
 
   Widget topTitle(String title) {
     return Text(title, style: TextStyle(fontSize: 22));
+  }
+
+  ///空实现，供子类实现
+  topTitle2(String s) {
+    return Container();
+  }
+
+  bottomTitle(String title) {
+    return Text(
+      title,
+      style: TextStyle(fontSize: 12, color: bottomTitleColor),
+    );
   }
 }
